@@ -69,6 +69,7 @@
         key.classList.add('playing');
     })
 
+    // function where see all transform transition specify to my style .playing { transform: scale(1.1);}
     function removeTransition(e) {
         //console.log(e.target.baseURI); //here i can know about all object and acess n property  exemple e.trget
         if (e.propertyName !== 'transform') return; //stop if is not transform
@@ -78,6 +79,7 @@
     }
     const keys = document.querySelectorAll('.key');
 
+    //here im listen transitionend where listen all trantions HTML
     keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 

@@ -58,6 +58,27 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+    window.addEventListener('keydown', function (e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+        //console.log(key);
+
+        if (!audio) return; //if is not a audio stop
+        audio.currentTime = 0; // force rewind start
+        audio.play();
+        key.classList.add('playing');
+    })
+
+    function removeTransition(e) {
+        //console.log(e.target.baseURI); //here i can know about all object and acess n property  exemple e.trget
+        if (e.propertyName !== 'transform') return; //stop if is not transform
+        console.log('who are u now this?', this);
+        this.classList.remove('playing');
+
+    }
+    const keys = document.querySelectorAll('.key');
+
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 
 
